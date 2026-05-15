@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agency Essentials — Tiauna Jasmine Hall</title>
+<meta name="description" content="Digital products, prompt packs, and weekly insights for builders walking out their God-given blueprint with AI. By Tiauna Jasmine Hall.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,700;1,9..40,300&family=DM+Serif+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --pink: #FFAEC9;
+    --pink-dim: rgba(255,174,201,0.1);
+    --black: #0a0a0a;
+    --dark: #111;
+    --card: #161616;
+    --card2: #1c1c1c;
+    --border: #202020;
+    --white: #ffffff;
+    --grey: #888;
+    --light: #c8c8c8;
+  }
+
+  html {
+    background: #050505;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
+    min-height: 100vh;
+  }
+
+  /* grain */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.032'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+    background: var(--pink);
+    z-index: 2;
+  }
+
+  .hero-glow {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 90% 10%, rgba(255,174,201,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 0% 90%, rgba(255,174,201,0.05) 0%, transparent 50%);
+  }
+
+  .hero-top {
+    position: relative; z-index: 1;
+    padding: 52px 64px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand-lock {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .brand-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.12em;
+    color: var(--white);
+  }
+
+  .brand-by {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #3a3a3a;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--grey);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--pink); }
+
+  .nav-links .nav-cta {
+    color: var(--black);
+    background: var(--pink);
+    padding: 10px 20px;
+    font-size: 9px;
+  }
+
+  .nav-links .nav-cta:hover { color: var(--black); opacity: 0.88; }
+
+  .hero-main {
+    position: relative; z-index: 1;
+    padding: 0 64px;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .hero-eyebrow::after {
+    content: '';
+    width: 48px;
+    height: 1px;
+    background: var(--pink);
+    opacity: 0.6;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 12vw, 120px);
+    line-height: 0.9;
+    letter-spacing: 0.015em;
+    color: var(--white);
+    margin-bottom: 36px;
+  }
+
+  .hero-title .pink { color: var(--pink); }
+
+  .hero-desc {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--light);
+    line-height: 1.7;
+    max-width: 560px;
+    margin-bottom: 40px;
+  }
+
+  .hero-desc strong { color: var(--white); font-weight: 700; }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--pink);
+    color: var(--black);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px 32px;
+    transition: opacity 0.2s;
+  }
+
+  .btn-primary:hover { opacity: 0.88; }
+
+  .btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 32px;
+    border: 1px solid var(--border);
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-outline:hover { border-color: var(--pink); color: var(--pink); }
+
+  .hero-bottom {
+    position: relative; z-index: 1;
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    padding: 32px 64px;
+    display: flex;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .stat-n {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--pink);
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+
+  .stat-l {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #444;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--border);
+  }
+
+  /* ── FEATURED — FOR THE BUILDERS ── */
+  .featured {
+    padding: 88px 64px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .featured::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--pink);
+  }
+
+  .section-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #3a3a3a;
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 7vw, 72px);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-bottom: 52px;
+  }
+
+  .section-title .pink { color: var(--pink); }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+  }
+
+  .feat-main {
+    background: var(--card);
+    padding: 48px 44px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 460px;
+  }
+
+  .feat-main::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--pink);
+  }
+
+  .feat-badge {
+    display: inline-block;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--pink);
+    padding: 5px 12px;
+    margin-bottom: 24px;
+    align-self: flex-start;
+  }
+
+  .feat-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: var(--white);
+    letter-spacing: 0.03em;
+    line-height: 0.93;
+    margin-bottom: 20px;
+  }
+
+  .feat-desc {
+    font-size: 15px;
+    color: var(--grey);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    flex: 1;
+  }
+
+  .feat-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .feat-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    color: var(--pink);
+    letter-spacing: 0.04em;
+  }
+
+  .feat-price span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--grey);
+    letter-spacing: 0.1em;
+  }
+
+  .feat-includes {
+    background: var(--card2);
+    padding: 32px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .inc-label {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 22px;
+  }
+
+  .inc-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .inc-item:last-child { border-bottom: none; }
+
+  .inc-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--pink);
+    opacity: 0.55;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 36px;
+  }
+
+  .inc-text h5 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+    letter-spacing: 0.03em;
+  }
+
+  .inc-text p {
+    font-size: 12px;
+    color: var(--grey);
+    line-height: 1.5;
+  }
+
+  /* ── PRODUCTS GRID ── */
+  .products {
+    padding: 88px 64px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+
+  .prod-card {
+    background: var(--card);
+    padding: 36px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    min-height: 340px;
+  }
+
+  .prod-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--pink);
+    opacity: 0.4;
+  }
+
+  .prod-card.featured-prod::before {
+    opacity: 1;
+  }
+
+  .prod-tag {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 16px;
+  }
+
+  .prod-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 34px;
+    color: var(--white);
+    letter-spacing: 0.03em;
+    line-height: 0.95;
+    margin-bottom: 16px;
+  }
+
+  .prod-desc {
+    font-size: 13px;
+    color: var(--grey);
+    line-height: 1.65;
+    flex: 1;
+    margin-bottom: 28px;
+  }
+
+  .prod-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  .prod-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--pink);
+    letter-spacing: 0.04em;
+  }
+
+  .prod-price.free { color: var(--grey); }
+
+  .prod-link {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .prod-link:hover { color: var(--pink); border-color: var(--pink); }
+
+  /* ── SUBSTACK SECTION ── */
+  .substack-section {
+    padding: 88px 64px;
+    border-bottom: 1px solid var(--border);
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .substack-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--pink);
+  }
+
+  .sub-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .sub-left h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 7vw, 76px);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-bottom: 28px;
+  }
+
+  .sub-left h2 span { color: var(--pink); }
+
+  .sub-left p {
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--light);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .sub-left p strong { color: var(--white); font-weight: 700; }
+
+  .sub-right {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .sub-post {
+    background: var(--card);
+    padding: 26px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-decoration: none;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .sub-post:hover { background: var(--card2); }
+
+  .sub-post::after {
+    content: '→';
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--pink);
+    font-size: 18px;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .sub-post:hover::after { opacity: 1; }
+
+  .sub-post-date {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #444;
+  }
+
+  .sub-post-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.35;
+  }
+
+  .sub-post-desc {
+    font-size: 12px;
+    color: var(--grey);
+    line-height: 1.5;
+  }
+
+  .sub-cta {
+    margin-top: 20px;
+  }
+
+  /* ── ABOUT STRIP ── */
+  .about {
+    padding: 88px 64px;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-left h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 6vw, 68px);
+    color: var(--white);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    margin-bottom: 28px;
+  }
+
+  .about-left h2 span { color: var(--pink); }
+
+  .about-left p {
+    font-size: 16px;
+    color: var(--grey);
+    line-height: 1.75;
+    margin-bottom: 18px;
+  }
+
+  .about-left p strong { color: var(--white); }
+
+  .about-right {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .about-item {
+    background: var(--card);
+    padding: 22px 26px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+
+  .ai-line {
+    width: 3px;
+    flex-shrink: 0;
+    background: var(--pink);
+    opacity: 0.5;
+    align-self: stretch;
+    min-height: 20px;
+  }
+
+  .ai-text p {
+    font-size: 14px;
+    color: var(--light);
+    line-height: 1.6;
+  }
+
+  .ai-text p strong { color: var(--white); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    padding: 48px 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: var(--white);
+    letter-spacing: 0.1em;
+  }
+
+  .footer-copy {
+    font-size: 10px;
+    color: #333;
+    letter-spacing: 0.08em;
+    line-height: 1.9;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--pink); }
+
+  @media (max-width: 768px) {
+    .hero-top, .hero-main, .hero-bottom,
+    .featured, .products, .substack-section, .about, footer {
+      padding-left: 28px;
+      padding-right: 28px;
+    }
+    .featured-grid, .products-grid, .sub-grid, .about {
+      grid-template-columns: 1fr;
+    }
+    .nav-links { display: none; }
+    .hero-bottom { flex-wrap: wrap; gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-glow"></div>
+
+  <div class="hero-top">
+    <div class="brand-lock">
+      <div class="brand-name">AI AGENCY ESSENTIALS</div>
+      <div class="brand-by">By Tiauna Jasmine Hall</div>
+    </div>
+
+  </div>
+
+  <div class="hero-main">
+    <div class="hero-eyebrow">Godly Productivity · AI Tools · Real Execution</div>
+    <div class="hero-title">
+      BUILD WHAT<br>
+      GOD <span class="pink">GAVE</span><br>
+      YOU.
+    </div>
+    <p class="hero-desc">
+      Digital products, prompt packs, and weekly insights for builders walking out their <strong>God-given blueprint</strong> — using AI as a practical tool, not a shortcut.
+    </p>
+    <div class="hero-actions">
+      <a href="#products" class="btn-primary">See All Products</a>
+      <a href="https://aiagencyessentials.substack.com" class="btn-outline">Read the Newsletter</a>
+    </div>
+  </div>
+
+  <div class="hero-bottom">
+    <div class="stat">
+      <div class="stat-n">FREE</div>
+      <div class="stat-l">Entry Point</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <div class="stat-n">3</div>
+      <div class="stat-l">Products Available</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <div class="stat-n">WK</div>
+      <div class="stat-l">Newsletter Drops</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <div class="stat-n">AI</div>
+      <div class="stat-l">Claude · ChatGPT · Gemini</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- ── ALL PRODUCTS ── -->
+<div class="products" id="products">
+  <div class="section-label">All Products</div>
+  <div class="section-title">THE <span class="pink">FULL</span><br>CATALOG</div>
+
+  <div class="products-grid">
+
+    <div class="prod-card">
+      <div>
+        <div class="prod-tag">Free &nbsp;·&nbsp; Prompt Pack</div>
+        <div class="prod-name">For the Builders</div>
+        <p class="prod-desc">8 Claude prompts for people who are actually building something. Websites, products, strategies, and God-given blueprints. Built and tested — not theoretical.</p>
+      </div>
+      <div class="prod-foot">
+        <div class="prod-price free">FREE</div>
+        <a href="https://aiagencyessentials.myflodesk.com/for-the-builders" class="prod-link">Download →</a>
+      </div>
+    </div>
+
+    <div class="prod-card featured-prod">
+      <div>
+        <div class="prod-tag">Paid &nbsp;·&nbsp; PDF Blueprint</div>
+        <div class="prod-name">Daily Execution Blueprint</div>
+        <p class="prod-desc">A 60-minute, AI-guided workflow for focused daily progress. One task. One hour. A system that rewards showing up — not burning out. Works with any AI tool.</p>
+      </div>
+      <div class="prod-foot">
+        <div class="prod-price">$7</div>
+        <a href="https://tiauna.gumroad.com/l/daily-execution-blueprint" class="prod-link">Get It →</a>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div>
+        <div class="prod-tag">Free &nbsp;·&nbsp; Interactive Tool</div>
+        <div class="prod-name">Wealth Creation Diagnostic</div>
+        <p class="prod-desc">Find out exactly where you are in your wealth-building journey. A free interactive tool that identifies the gap — so you know exactly what to work on next.</p>
+      </div>
+      <div class="prod-foot">
+        <div class="prod-price free">FREE</div>
+        <a href="https://tiaunacreateshdc.github.io/wealth-creation-diagnostic/" class="prod-link">Take It →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ── SUBSTACK / NEWSLETTER ── -->
+<div class="substack-section" id="substack">
+  <div class="sub-grid">
+    <div class="sub-left">
+      <div class="section-label">Weekly Newsletter</div>
+      <h2>AI AGENCY<br><span>ESSENTIALS</span></h2>
+      <p>Every week I share what I'm actually building, the AI workflows I'm using, and practical frameworks for creators and builders who want to <strong>execute with focus — not pressure.</strong></p>
+      <p>No fluff. No performance. Just what's working, what isn't, and what I'm learning in real time.</p>
+      <div class="sub-cta">
+        <a href="https://aiagencyessentials.substack.com" class="btn-primary">Subscribe Free</a>
+      </div>
+    </div>
+
+    <div class="sub-right">
+      <div class="section-label" style="margin-bottom: 18px;">Recent Posts</div>
+      <a href="https://aiagencyessentials.substack.com" class="sub-post">
+        <div class="sub-post-date">March 2026</div>
+        <div class="sub-post-title">The One Thing AI Can't Do For You</div>
+        <div class="sub-post-desc">You can build the entire framework and still not show up for it. That's the gap no tool closes.</div>
+      </a>
+      <a href="https://aiagencyessentials.substack.com" class="sub-post">
+        <div class="sub-post-date">AI Agency Essentials</div>
+        <div class="sub-post-title">Godly Productivity — What It Actually Means</div>
+        <div class="sub-post-desc">It's not about doing more. It's about being faithful with what's in your hands right now.</div>
+      </a>
+      <a href="https://aiagencyessentials.substack.com" class="sub-post">
+        <div class="sub-post-date">AI Agency Essentials</div>
+        <div class="sub-post-title">How I Built Two Websites, a Product, and a Blueprint in 7 Days</div>
+        <div class="sub-post-desc">The For the Builders prompts came from this. Here's the full story.</div>
+      </a>
+      <a href="https://aiagencyessentials.substack.com" class="sub-post">
+        <div class="sub-post-date">AI Agency Essentials</div>
+        <div class="sub-post-title">Read All Posts →</div>
+        <div class="sub-post-desc">aiagencyessentials.substack.com</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── ABOUT ── -->
+<div class="about" id="about">
+  <div class="about-left">
+    <div class="section-label">About</div>
+    <h2>WHO I<br><span>AM.</span></h2>
+    <p>I'm <strong>Tiauna Jasmine Hall.</strong> Published author. Visual artist. Media director. Ten years of building in spaces that weren't designed with me in mind.</p>
+    <p>I started AI Agency Essentials because I needed it myself. I was building every day and still felt scattered. AI changed how I worked — not because it did the work, but because it helped me get out of my own way.</p>
+    <p>Everything here came from something I actually built, actually used, actually ran into a wall with first.</p>
+    <div style="margin-top: 28px;">
+      <a href="https://www.instagram.com/tiaunacreates" class="btn-outline">Follow @tiaunacreates</a>
+    </div>
+  </div>
+
+  <div class="about-right">
+    <div class="about-item">
+      <div class="ai-line"></div>
+      <div class="ai-text"><p>I write about what I'm learning in real time. Not what worked six months ago. What I'm figuring out now, in the build.</p></div>
+    </div>
+    <div class="about-item">
+      <div class="ai-line"></div>
+      <div class="ai-text"><p>These products are for builders at any stage. Just starting out, mid-build, or rebuilding from scratch — the tools work wherever you are.</p></div>
+    </div>
+    <div class="about-item">
+      <div class="ai-line"></div>
+      <div class="ai-text"><p>The prompts came from real builds. The blueprint came from a real problem. If I wouldn't use it, it doesn't get sold here.</p></div>
+    </div>
+    <div class="about-item">
+      <div class="ai-line"></div>
+      <div class="ai-text"><p>The newsletter is free. The products are practical. Everything is built to be used, not just downloaded and forgotten.</p></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-left">
+    <div class="footer-brand">AI AGENCY ESSENTIALS</div>
+    <div class="footer-copy">
+      © 2026 Tiauna Jasmine Hall · AI Agency Essentials. All rights reserved.<br>
+      Jacksonville, FL &nbsp;·&nbsp; aiagencyessentials.substack.com
+    </div>
+  </div>
+  <div class="footer-links">
+    <a href="https://aiagencyessentials.substack.com">Substack</a>
+    <a href="https://www.instagram.com/tiaunacreates">Instagram</a>
+    <a href="https://tiauna.gumroad.com">Gumroad</a>
+    <a href="https://bio.site/taj">Link in Bio</a>
+    <a href="https://aiagencyessentials.myflodesk.com/for-the-builders">Free Download</a>
+  </div>
+</footer>
+
+</body>
+</html>
